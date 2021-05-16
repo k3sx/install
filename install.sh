@@ -9,7 +9,7 @@ curl -sfL https://get.k3s.io \
   | INSTALL_K3S_CHANNEL=latest INSTALL_K3S_VERSION=v1.21.0+k3s1 \
   sh -s - --disable servicelb --disable traefik
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
-source ~/.bashrc
+. $HOME/.bashrc
 
 # Helm
 curl -sfL https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz | tar -xzvf -
