@@ -9,7 +9,7 @@ swapoff -a
 if (( $# < 2 )); then
   embed=" --token $1 --cluster-init"
 else
-  embed=" --token $1 --server $2"
+  embed=" --token $1 --server https://$2:6443"
 fi
 
 command="curl -sfL https://get.k3s.io | \
