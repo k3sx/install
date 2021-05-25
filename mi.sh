@@ -22,7 +22,7 @@ command="curl -sfL https://get.k3s.io | \
 eval "$command"
 
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
-. $HOME/.bashrc
+source $HOME/.bashrc
 
 # Helm
 curl -sfL https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz | tar -xzvf -
@@ -34,7 +34,6 @@ curl -sfL https://github.com/derailed/k9s/releases/download/v0.24.9/k9s_Linux_x8
 mv k9s /usr/local/bin
 
 # minimal-vimrc
-git clone https://github.com/k3sx/minimal-vimrc.git
-mv minimal-vimrc/.vimrc . && rm -r minimal-vimrc
+wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
 
 cat $KUBECONFIG
