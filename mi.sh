@@ -44,3 +44,5 @@ wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
 
 cat $KUBECONFIG
 kubectl get nodes -o wide
+
+echo 'version 1'
