@@ -24,9 +24,6 @@ command="curl -sfL https://get.k3s.io | \
 
 eval "$command"
 
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
-
 # Helm
 curl -sfL https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz | tar -xzvf -
 mv linux-amd64/helm /usr/local/bin && rm -r linux-amd64
@@ -44,5 +41,8 @@ wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
 
 cat $KUBECONFIG
 kubectl get nodes -o wide
+
+echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
+exec bash
 
 echo 'version 1'
