@@ -34,6 +34,7 @@ curl -sfL https://github.com/derailed/k9s/releases/download/v0.24.9/k9s_Linux_x8
 mv k9s /usr/local/bin
 
 # tmux
+apt update
 apt install tmux -y
 
 # minimal-vimrc
