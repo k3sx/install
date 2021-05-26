@@ -39,10 +39,11 @@ apt install tmux -y
 # minimal-vimrc
 wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
 
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
+
 cat $KUBECONFIG
 kubectl get nodes -o wide
 
-echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
-exec bash
-
 echo 'version 1'
+exec bash
