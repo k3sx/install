@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Front Matter
-set -x
+# set -x
 set -o vi
 swapoff -a
 
