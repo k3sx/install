@@ -20,7 +20,6 @@ command="curl -sfL https://get.k3s.io | \
   sh -s - \
   --disable traefik \
   --node-ip `hostname -I | sed -En 's/^\S+\s(\S+)\s.*/\1/p'` \
-  --node-external-ip `hostname -I | sed -En 's/^(\S+)\s.*/\1/p'` \
   ${embed}"
 
 eval "$command"
@@ -36,6 +35,9 @@ mv linux-amd64/helm /usr/local/bin && rm -r linux-amd64
 curl -sfL https://github.com/derailed/k9s/releases/download/v0.24.9/k9s_Linux_x86_64.tar.gz \
   | tar -xzvf -
 mv k9s /usr/local/bin
+
+# tmux
+apt install tmux
 
 # minimal-vimrc
 wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
