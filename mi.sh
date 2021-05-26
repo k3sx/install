@@ -13,13 +13,13 @@ else
 fi
 
 # --node-external-ip `hostname -I | sed -En 's/^(\S+)\s.*/\1/p'` \
-# --node-ip `hostname -I | sed -En 's/^\S+\s(\S+)\s.*/\1/p'` \
 
 command="curl -sfL https://get.k3s.io | \
   INSTALL_K3S_CHANNEL=latest \
   INSTALL_K3S_VERSION=v1.21.0+k3s1 \
   sh -s - \
   --disable traefik \
+  --node-ip `hostname -I | sed -En 's/^\S+\s(\S+)\s.*/\1/p'` \
   ${embed}"
 
 eval "$command"
