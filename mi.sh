@@ -23,8 +23,8 @@ command="curl -sfL https://get.k3s.io | \
 
 eval "$command"
 
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc 
-source $HOME/.bashrc
 
 # Helm
 curl -sfL https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz | tar -xzvf -
