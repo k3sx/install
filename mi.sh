@@ -20,6 +20,7 @@ command="curl -sfL https://get.k3s.io | \
   sh -s - \
   --disable traefik \
   --node-ip `hostname -I | sed -En 's/^\S+\s(\S+)\s.*/\1/p'` \
+  --node-external-ip `hostname -I | sed -En 's/^(\S+)\s.*/\1/p'` \
   ${embed}"
 
 eval "$command"
@@ -40,3 +41,4 @@ mv k9s /usr/local/bin
 wget https://raw.githubusercontent.com/k3sx/minimal-vimrc/main/.vimrc
 
 cat $KUBECONFIG
+kubectl get nodes -o wide
