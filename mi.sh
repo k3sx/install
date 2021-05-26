@@ -17,8 +17,8 @@ command="curl -sfL https://get.k3s.io | \
   INSTALL_K3S_VERSION=v1.21.0+k3s1 \
   sh -s - \
   -v 2 \
-  --node-external-ip $(hostname -I | grep -o '^\S\+') \
-  --node-ip $(hostname -I | grep -o '\s\S\+\s') \
+  --node-external-ip $(hostname -I | sed -En 's/^(\S+)\s.*/\1/p' \
+  --node-ip $(hostname -I | sed -En 's/^\S+\s(\S+)\s.*/\1/p' \
   --disable traefik \
   ${embed}"
 
