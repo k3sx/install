@@ -18,7 +18,7 @@ command="curl -sfL https://get.k3s.io | \
   sh -s - \
   --disable traefik \
   --disable servicelb \
-  --token $1
+  --token $1 \
   --tls-san `hostname -I | awk '{print $1}'` \
   --node-ip `hostname -I | awk '{print $2}'` \
   ${append}"
@@ -49,5 +49,3 @@ kubectl get nodes -o wide
 
 echo 'version 1'
 exec bash
-
-# ln -s `which kubectl` /usr/local/bin/k
