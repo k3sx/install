@@ -50,4 +50,4 @@ kubectl get nodes -o wide
 echo 'version 1'
 exec bash
 
-ln -s `which kubectl` /user/local/bin/k
+# ln -s `which kubectl` /usr/local/bin/k
