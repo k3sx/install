@@ -4,8 +4,8 @@
 
 # multi-install
 
-Run `curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s \<token\> \<fixed registration address\> [first]`
+Run `curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s TOKEN FIXED_REGISTRATION_ADDRESS [first]`
 
-- \<token\> is a secure token
-- \<fixed registration address\> is a virtual or external load balancer's IP
-- `first` indicates if this is the first master to be installed
+- TOKEN is a secure token
+- FIXED_REGISTRATION_ADDRESS is a virtual or external load balancer's IP
+- first indicates if this is the first master to be installed
