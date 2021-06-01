@@ -5,12 +5,18 @@
 set -o vi
 swapoff -a
 
+TOKEN=$2
+RAND_TOKEN=${TOKEN:-`openssl rand -base64 48`}
+
 # k3s
-if (( $# < 3 )); then
+if (( $# < 1 )); then
   append=" --cluster-init"
+  echo "curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s https://`hostname -I | awk '{print $1}'`:6443 $RAND_TOKEN"
 else
-  append=" --server https://$2:6443"
+  append=" --server https://$1:6443"
 fi
+
+# --tls-san `hostname -I | awk '{print $1}'` \
 
 command="curl -sfL https://get.k3s.io | \
   INSTALL_K3S_CHANNEL=latest \
@@ -18,8 +24,7 @@ command="curl -sfL https://get.k3s.io | \
   sh -s - \
   --disable traefik \
   --disable servicelb \
-  --token $1 \
-  --tls-san `hostname -I | awk '{print $1}'` \
+  --token $RAND_TOKEN \
   --node-ip `hostname -I | awk '{print $2}'` \
   ${append}"
 
@@ -47,5 +52,4 @@ echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> $HOME/.bashrc
 cat $KUBECONFIG
 kubectl get nodes -o wide
 
-echo 'version 1'
 exec bash
