@@ -11,12 +11,13 @@ RAND_TOKEN=${TOKEN:-`openssl rand -base64 48`}
 # k3s
 if (( $# < 1 )); then
   append=" --cluster-init"
-  echo "curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s https://`hostname -I | awk '{print $2}'`:6443 $RAND_TOKEN"
+  echo "curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s https://`hostname -I | awk '{print $1}'`:6443 $RAND_TOKEN"
 else
   append=" --server https://$1:6443"
 fi
 
 # --tls-san `hostname -I | awk '{print $1}'` \
+# --node-ip `hostname -I | awk '{print $2}'` \
 
 command="curl -sfL https://get.k3s.io | \
   INSTALL_K3S_CHANNEL=latest \
@@ -25,7 +26,6 @@ command="curl -sfL https://get.k3s.io | \
   --disable traefik \
   --disable servicelb \
   --token $RAND_TOKEN \
-  --node-ip `hostname -I | awk '{print $2}'` \
   ${append}"
 
 eval "$command"
