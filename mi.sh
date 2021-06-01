@@ -11,7 +11,7 @@ RAND_TOKEN=${TOKEN:-`openssl rand -base64 48`}
 # k3s
 if (( $# < 1 )); then
   append=" --cluster-init"
-  echo "curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s https://`hostname -I | awk '{print $1}'`:6443 $RAND_TOKEN"
+  echo "curl -sfL https://raw.githubusercontent.com/k3sx/install/main/mi.sh | bash -s https://`hostname -I | awk '{print $2}'`:6443 $RAND_TOKEN"
 else
   append=" --server https://$1:6443"
 fi
